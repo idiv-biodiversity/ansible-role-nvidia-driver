@@ -1,0 +1,23 @@
+---
+
+galaxy_info:
+
+  author: Christian Krause
+  description: 'install NVIDIA driver'
+  company: German Centre for Integrative Biodiversity Research (iDiv)
+  license: MIT
+  min_ansible_version: 2.0
+
+  platforms:
+    - name: EL
+      versions:
+        - 6
+        - 7
+
+  galaxy_tags:
+    - gpu
+    - gpgpu
+    - nvidia
+    - nvidia-driver
+
+...
