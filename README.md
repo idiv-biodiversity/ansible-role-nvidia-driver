@@ -39,7 +39,7 @@ nvidia_driver_install: yes
 NVIDIA driver version:
 
 ```yml
-nvidia_driver_version: '387.22'
+nvidia_driver_version: '390.30'
 ```
 
 The download directory to which the driver installation package will be downloaded:

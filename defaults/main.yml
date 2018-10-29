@@ -1,6 +1,6 @@
 ---
 
-nvidia_driver_version: '387.22'
+nvidia_driver_version: '390.30'
 
 nvidia_driver_install: yes
 
