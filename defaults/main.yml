@@ -8,6 +8,6 @@ nvidia_driver_download_dir: '/var/cache/nvidia'
 
 nvidia_driver_build_remove_gcc: no
 
-nvidia_driver_base_url: 'http://us.download.nvidia.com/XFree86'
+nvidia_driver_base_url: 'http://us.download.nvidia.com/tesla'
 
 ...
