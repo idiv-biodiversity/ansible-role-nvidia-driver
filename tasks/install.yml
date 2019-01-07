@@ -26,11 +26,10 @@
 
 - name: install build dependencies
   yum:
-    pkg: '{{ item }}'
-  with_items:
-    - 'gcc'
-    - 'kernel-devel-{{ ansible_kernel }}'
-    - 'kernel-headers-{{ ansible_kernel }}'
+    name:
+      - 'gcc'
+      - 'kernel-devel-{{ ansible_kernel }}'
+      - 'kernel-headers-{{ ansible_kernel }}'
 
 - name: install driver
   command: ./{{ nvidia_driver_filename }} --silent
