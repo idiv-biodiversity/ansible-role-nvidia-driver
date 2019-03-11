@@ -13,7 +13,8 @@
     state: absent
 
 - name: check if nvidia driver is installed
-  shell: >
+  shell: |
+    set -o pipefail
     nvidia-modprobe --version |
     grep -oP 'version \K[[:digit:]]+\.[[:digit:]]+'
   register: nvidia_driver_installed_version
