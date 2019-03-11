@@ -54,12 +54,6 @@ Whether or not to remove the `gcc` package after installation:
 nvidia_driver_build_remove_gcc: no
 ```
 
-The base URL for the download:
-
-```yml
-nvidia_driver_base_url: 'http://us.download.nvidia.com/XFree86'
-```
-
 Dependencies
 ------------
 
