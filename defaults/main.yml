@@ -2,7 +2,7 @@
 
 nvidia_driver_type: 'XFree86'
 
-nvidia_driver_version: '387.22'
+nvidia_driver_version: '418.43'
 
 nvidia_driver_install: yes
 
