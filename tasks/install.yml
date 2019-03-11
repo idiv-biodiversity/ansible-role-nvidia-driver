@@ -32,7 +32,7 @@
       - 'kernel-headers-{{ ansible_kernel }}'
 
 - name: install driver
-  command: ./{{ nvidia_driver_filename }} --silent
+  command: ./{{ nvidia_driver_filename }} --silent # noqa 301
   args:
     chdir: '{{ nvidia_driver_download_dir }}'
 
