@@ -18,6 +18,6 @@ galaxy_info:
     - gpu
     - gpgpu
     - nvidia
-    - nvidia-driver
+    - driver
 
 ...
