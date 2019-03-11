@@ -36,6 +36,12 @@ Whether or not to install the driver:
 nvidia_driver_install: yes
 ```
 
+NVIDIA driver type, possible other value is **tesla**:
+
+```yml
+nvidia_driver_version: 'XFree86'
+```
+
 NVIDIA driver version:
 
 ```yml

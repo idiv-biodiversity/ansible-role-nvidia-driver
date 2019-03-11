@@ -1,5 +1,8 @@
 ---
 
+- name: include driver type specific vars
+  include_vars: '{{ nvidia_driver_type | lower }}.yml'
+
 - name: blacklist nouveau kernel module
   kernel_blacklist:
     name: 'nouveau'
@@ -37,7 +40,8 @@
     not nvidia_driver_kernel_module.stat.exists
   failed_when: no
 
-- include_tasks: install.yml
+- name: include actual installation
+  include_tasks: install.yml
   when: >
     nvidia_driver_installed_version.changed or
     nvidia_driver_nvidiactl.changed or

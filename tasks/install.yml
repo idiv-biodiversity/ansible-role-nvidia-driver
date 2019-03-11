@@ -38,7 +38,7 @@
 
 - name: remove gcc
   yum:
-    pkg: gcc
+    name: gcc
     state: absent
   when: nvidia_driver_build_remove_gcc
 

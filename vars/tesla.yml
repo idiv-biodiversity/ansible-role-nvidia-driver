@@ -1,0 +1,6 @@
+---
+
+nvidia_driver_url: >-
+  {{ nvidia_driver_base_url }}/{{ nvidia_driver_version }}/{{ nvidia_driver_filename }}
+
+...

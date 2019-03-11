@@ -1,6 +1,7 @@
 ---
 
-- include_tasks: nvidia-driver.yml
+- name: include main installation tasks
+  include_tasks: nvidia-driver.yml
   when: nvidia_driver_install
 
 ...

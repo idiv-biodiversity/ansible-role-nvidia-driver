@@ -1,13 +1,15 @@
 ---
 
-nvidia_driver_base_url: 'http://us.download.nvidia.com/XFree86'
+nvidia_driver_base_url: >-
+  http://us.download.nvidia.com/{{ nvidia_driver_type }}
 
-nvidia_driver_arch: '{{ ansible_system }}-{{ ansible_architecture }}'
+nvidia_driver_arch: >-
+  {{ ansible_system }}-{{ ansible_architecture }}
 
-nvidia_driver_filename: 'NVIDIA-{{ nvidia_driver_arch }}-{{ nvidia_driver_version }}.run'
+nvidia_driver_filename: >-
+  NVIDIA-{{ nvidia_driver_arch }}-{{ nvidia_driver_version }}.run
 
-nvidia_driver_url: '{{ nvidia_driver_base_url }}/{{ nvidia_driver_arch }}/{{ nvidia_driver_version }}/{{ nvidia_driver_filename }}'
-
-nvidia_driver_file: '{{ nvidia_driver_download_dir }}/{{ nvidia_driver_filename }}'
+nvidia_driver_file: >-
+  {{ nvidia_driver_download_dir }}/{{ nvidia_driver_filename }}
 
 ...
