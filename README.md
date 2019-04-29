@@ -25,7 +25,8 @@ Requirements
 - Ansible 2.4+
 - **RedHat**-based distribution
 
-**Help Wanted:** Contributions for **Debian**-based distributions are highly welcome pull requests!
+**Help Wanted:** Contributions for **Debian**-based distributions are highly
+welcome pull requests!
 
 Role Variables
 --------------
@@ -48,7 +49,8 @@ NVIDIA driver version:
 nvidia_driver_version: '387.22'
 ```
 
-The download directory to which the driver installation package will be downloaded:
+The download directory to which the driver installation package will be
+downloaded:
 
 ```yml
 nvidia_driver_download_dir: '/var/cache/nvidia'
@@ -125,7 +127,9 @@ MIT
 Author Information
 ------------------
 
-This role was created in 2017 by [Christian Krause][author] aka [wookietreiber at GitHub][wookietreiber], HPC cluster systems administrator at the [German Centre for Integrative Biodiversity Research (iDiv)][idiv].
+This role was created in 2017 by [Christian Krause][author] aka [wookietreiber
+at GitHub][wookietreiber], HPC cluster systems administrator at the [German
+Centre for Integrative Biodiversity Research (iDiv)][idiv].
 
 
 [author]: https://www.idiv.de/groups_and_people/employees/details/eshow/krause-christian.html
