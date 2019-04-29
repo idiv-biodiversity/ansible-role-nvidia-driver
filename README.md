@@ -22,7 +22,7 @@ Table of Contents
 Requirements
 ------------
 
-- Ansible 2+
+- Ansible 2.4+
 - **RedHat**-based distribution
 
 **Help Wanted:** Contributions for **Debian**-based distributions are highly welcome pull requests!
