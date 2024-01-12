@@ -12,11 +12,11 @@
     name: 'nouveau'
     state: absent
 
-- name: check if nvidia driver is installed
+- name: check installed nvidia driver version
   ansible.builtin.shell: |
     set -o pipefail
     nvidia-modprobe --version |
-    grep -oP 'version \K[[:digit:]]+\.[[:digit:]]+'
+      grep -oP 'version \K[[:digit:]\.]+'
   register: nvidia_driver_installed_version
   check_mode: no
   changed_when: >-
