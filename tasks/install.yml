@@ -5,7 +5,7 @@
 # -----------------------------------------------------------------------------
 
 - name: create download cache
-  file:
+  ansible.builtin.file:
     path: '{{ nvidia_driver_download_dir }}'
     state: directory
     owner: root
@@ -13,7 +13,7 @@
     mode: 0755
 
 - name: download NVIDIA driver
-  get_url:
+  ansible.builtin.get_url:
     url: '{{ nvidia_driver_url }}'
     dest: '{{ nvidia_driver_file }}'
     owner: root
@@ -25,19 +25,19 @@
 # -----------------------------------------------------------------------------
 
 - name: install build dependencies
-  yum:
+  ansible.builtin.yum:
     name:
       - 'gcc'
       - 'kernel-devel-{{ ansible_kernel }}'
       - 'kernel-headers-{{ ansible_kernel }}'
 
 - name: install driver
-  command: ./{{ nvidia_driver_filename }} --silent # noqa 301
+  ansible.builtin.command: ./{{ nvidia_driver_filename }} --silent # noqa 301
   args:
     chdir: '{{ nvidia_driver_download_dir }}'
 
 - name: remove gcc
-  yum:
+  ansible.builtin.yum:
     name: gcc
     state: absent
   when: nvidia_driver_build_remove_gcc

@@ -66,6 +66,11 @@ Dependencies
 
 # requirements.yml
 
+collections:
+
+  - name: community.general
+    version: X.Y.Z
+
 roles:
 
   - name: idiv_biodiversity.nvidia_driver
