@@ -17,42 +17,39 @@
     set -o pipefail
     nvidia-modprobe --version |
       grep -oP 'version \K[[:digit:]\.]+'
-  register: nvidia_driver_installed_version
+  register: __nvidia_driver_installed_version
   check_mode: no
   changed_when: >-
-    nvidia_driver_installed_version.stdout != nvidia_driver_version
+    __nvidia_driver_installed_version.stdout != nvidia_driver_version
   failed_when: no
 
 - name: check if nvidiactl device exists
   ansible.builtin.stat:
     path: '/dev/nvidiactl'
-  register: nvidia_driver_nvidiactl
   check_mode: no
-  changed_when: >-
-    not nvidia_driver_nvidiactl.stat.exists
+  register: __nvidia_driver_nvidiactl
+  changed_when: not __nvidia_driver_nvidiactl.stat.exists
   failed_when: no
 
 - name: check if nvidia driver kernel module exists for current kernel
   ansible.builtin.stat:
     path: '/lib/modules/{{ ansible_kernel }}/kernel/drivers/video/nvidia.ko'
-  register: nvidia_driver_kernel_module
   check_mode: no
-  changed_when: >-
-    not nvidia_driver_kernel_module.stat.exists
+  register: __nvidia_driver_kernel_module
+  changed_when: not __nvidia_driver_kernel_module.stat.exists
   failed_when: no
 
 - name: include actual installation
   ansible.builtin.include_tasks: install.yml
   when: >
-    nvidia_driver_installed_version.changed or
-    nvidia_driver_nvidiactl.changed or
-    nvidia_driver_kernel_module.changed
+    __nvidia_driver_installed_version.changed or
+    __nvidia_driver_nvidiactl.changed or
+    __nvidia_driver_kernel_module.changed
 
 - name: load nvidia kernel module
   community.general.modprobe:
     name: 'nvidia'
     params: 'NVreg_EnableMSI=0'
-  register: nvidia_driver_module_loaded
 
 - name: load nvidia unified virtual memory kernel module
   community.general.modprobe:
@@ -65,13 +62,13 @@
 
 - name: check persistence mode
   ansible.builtin.command: 'nvidia-smi --query-gpu=persistence_mode --format=csv,noheader'
-  register: persistence_mode
+  register: __nvidia_driver_persistence_mode
   check_mode: no
   changed_when: no
 
 - name: keep nvidia devices ready-to-use
   ansible.builtin.command: nvidia-smi --persistence-mode=ENABLED
-  when: persistence_mode.stdout.find('Enabled') == -1
+  when: __nvidia_driver_persistence_mode.stdout.find('Enabled') == -1
   register: __nvidia_driver_enable_persistence_mode
   changed_when: __nvidia_driver_enable_persistence_mode.rc == 0
   failed_when: __nvidia_driver_enable_persistence_mode.rc != 0
