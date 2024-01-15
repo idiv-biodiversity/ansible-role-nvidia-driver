@@ -61,7 +61,8 @@
     creates: /dev/nvidiactl
 
 - name: check persistence mode
-  ansible.builtin.command: 'nvidia-smi --query-gpu=persistence_mode --format=csv,noheader'
+  ansible.builtin.command: >-
+    nvidia-smi --query-gpu=persistence_mode --format=csv,noheader
   register: __nvidia_driver_persistence_mode
   check_mode: no
   changed_when: no
