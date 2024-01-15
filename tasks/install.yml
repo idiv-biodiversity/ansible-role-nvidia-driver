@@ -14,8 +14,8 @@
 
 - name: download NVIDIA driver
   ansible.builtin.get_url:
-    url: '{{ nvidia_driver_url }}'
-    dest: '{{ nvidia_driver_file }}'
+    url: '{{ __nvidia_driver_url }}'
+    dest: '{{ __nvidia_driver_file }}'
     owner: root
     group: root
     mode: 0755
@@ -32,7 +32,7 @@
       - 'kernel-headers-{{ ansible_kernel }}'
 
 - name: install driver
-  ansible.builtin.command: ./{{ nvidia_driver_filename }} --silent
+  ansible.builtin.command: ./{{ __nvidia_driver_filename }} --silent
   args:
     chdir: '{{ nvidia_driver_download_dir }}'
   register: __nvidia_driver_installation

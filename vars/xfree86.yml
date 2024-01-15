@@ -1,6 +1,6 @@
 ---
 
-nvidia_driver_url: >-
-  {{ nvidia_driver_base_url }}/{{ nvidia_driver_arch }}/{{ nvidia_driver_version }}/{{ nvidia_driver_filename }}
+__nvidia_driver_url: >-
+  {{ __nvidia_driver_base_url }}/{{ __nvidia_driver_arch }}/{{ nvidia_driver_version }}/{{ __nvidia_driver_filename }}
 
 ...
