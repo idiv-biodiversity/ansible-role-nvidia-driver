@@ -32,9 +32,12 @@
       - 'kernel-headers-{{ ansible_kernel }}'
 
 - name: install driver
-  ansible.builtin.command: ./{{ nvidia_driver_filename }} --silent # noqa 301
+  ansible.builtin.command: ./{{ nvidia_driver_filename }} --silent
   args:
     chdir: '{{ nvidia_driver_download_dir }}'
+  register: __nvidia_driver_installation
+  changed_when: __nvidia_driver_installation.rc == 0
+  failed_when: __nvidia_driver_installation.rc != 0
 
 - name: remove gcc
   ansible.builtin.yum:

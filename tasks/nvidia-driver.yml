@@ -72,5 +72,8 @@
 - name: keep nvidia devices ready-to-use
   ansible.builtin.command: nvidia-smi --persistence-mode=ENABLED
   when: persistence_mode.stdout.find('Enabled') == -1
+  register: __nvidia_driver_enable_persistence_mode
+  changed_when: __nvidia_driver_enable_persistence_mode.rc == 0
+  failed_when: __nvidia_driver_enable_persistence_mode.rc != 0
 
 ...
