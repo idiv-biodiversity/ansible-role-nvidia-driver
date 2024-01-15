@@ -61,26 +61,22 @@ nvidia_driver_build_remove_gcc: no
 Dependencies
 ------------
 
-None.
-
-Example Playbook
-----------------
-
-Add to `requirements.yml`:
-
 ```yml
 ---
 
-- src: idiv-biodiversity.nvidia-driver
+# requirements.yml
+
+roles:
+
+  - name: idiv_biodiversity.nvidia_driver
+    src: https://github.com/idiv-biodiversity/ansible-role-nvidia-driver
+    version: vX.Y.Z
 
 ...
 ```
 
-Download:
-
-```console
-$ ansible-galaxy install -r requirements.yml
-```
+Example Playbook
+----------------
 
 ### Top-Level Playbook
 
@@ -92,7 +88,7 @@ Write a top-level playbook:
 - name: compute nodes
   hosts: compute
   roles:
-    - role: idiv-biodiversity.nvidia-driver
+    - role: idiv_biodiversity.nvidia_driver
       tags:
         - nvidia-driver
 
@@ -108,7 +104,7 @@ Define the role dependency in `meta/main.yml`:
 
 dependencies:
 
-  - role: idiv-biodiversity.nvidia-driver
+  - role: idiv_biodiversity.nvidia_driver
     tags:
       - nvidia-driver
 

@@ -1,6 +1,8 @@
 ---
 
 galaxy_info:
+  role_name: nvidia_driver
+  namespace: idiv_biodiversity
 
   author: Christian Krause
   description: 'install NVIDIA driver'
