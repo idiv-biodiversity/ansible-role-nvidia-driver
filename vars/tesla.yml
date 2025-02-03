@@ -1,5 +1,7 @@
 ---
 
+# yamllint disable rule:line-length
+
 __nvidia_driver_url: >-
   {{ __nvidia_driver_base_url }}/{{ nvidia_driver_version }}/{{ __nvidia_driver_filename }}
 

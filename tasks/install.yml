@@ -10,7 +10,7 @@
     state: directory
     owner: root
     group: root
-    mode: 0755
+    mode: '0755'
   check_mode: no
 
 - name: download NVIDIA driver
@@ -19,7 +19,7 @@
     dest: '{{ __nvidia_driver_file }}'
     owner: root
     group: root
-    mode: 0755
+    mode: '0755'
   check_mode: no
 
 # -----------------------------------------------------------------------------
@@ -27,7 +27,7 @@
 # -----------------------------------------------------------------------------
 
 - name: install build dependencies
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name:
       - 'gcc'
       - 'kernel-devel-{{ ansible_kernel }}'
@@ -42,7 +42,7 @@
   failed_when: __nvidia_driver_installation.rc != 0
 
 - name: remove gcc
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: gcc
     state: absent
   when: nvidia_driver_build_remove_gcc
