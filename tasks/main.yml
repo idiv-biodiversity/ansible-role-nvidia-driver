@@ -2,6 +2,7 @@
 
 - name: include main installation tasks
   ansible.builtin.include_tasks: nvidia-driver.yml
-  when: nvidia_driver_install
+  when:
+    - nvidia_driver_install
 
 ...

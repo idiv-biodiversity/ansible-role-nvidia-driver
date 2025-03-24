@@ -38,13 +38,16 @@
   args:
     chdir: '{{ nvidia_driver_download_dir }}'
   register: __nvidia_driver_installation
-  changed_when: __nvidia_driver_installation.rc == 0
-  failed_when: __nvidia_driver_installation.rc != 0
+  changed_when:
+    - __nvidia_driver_installation.rc == 0
+  failed_when:
+    - __nvidia_driver_installation.rc != 0
 
 - name: remove gcc
   ansible.builtin.dnf:
     name: gcc
     state: absent
-  when: nvidia_driver_build_remove_gcc
+  when:
+    - nvidia_driver_build_remove_gcc
 
 ...

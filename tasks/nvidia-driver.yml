@@ -19,8 +19,8 @@
       grep -oP 'version \K[[:digit:]\.]+'
   register: __nvidia_driver_installed_version
   check_mode: no
-  changed_when: >-
-    __nvidia_driver_installed_version.stdout != nvidia_driver_version
+  changed_when:
+    - __nvidia_driver_installed_version.stdout != nvidia_driver_version
   failed_when: no
 
 - name: check if nvidiactl device exists
@@ -28,7 +28,8 @@
     path: '/dev/nvidiactl'
   check_mode: no
   register: __nvidia_driver_nvidiactl
-  changed_when: not __nvidia_driver_nvidiactl.stat.exists
+  changed_when:
+    - not __nvidia_driver_nvidiactl.stat.exists
   failed_when: no
 
 - name: check if nvidia driver kernel module exists for current kernel
@@ -36,15 +37,17 @@
     path: '/lib/modules/{{ ansible_kernel }}/kernel/drivers/video/nvidia.ko'
   check_mode: no
   register: __nvidia_driver_kernel_module
-  changed_when: not __nvidia_driver_kernel_module.stat.exists
+  changed_when:
+    - not __nvidia_driver_kernel_module.stat.exists
   failed_when: no
 
 - name: include actual installation
   ansible.builtin.include_tasks: install.yml
-  when: >
-    __nvidia_driver_installed_version.changed or
-    __nvidia_driver_nvidiactl.changed or
-    __nvidia_driver_kernel_module.changed
+  when:
+    - >-
+      __nvidia_driver_installed_version.changed or
+      __nvidia_driver_nvidiactl.changed or
+      __nvidia_driver_kernel_module.changed
 
 - name: load nvidia kernel module
   community.general.modprobe:
@@ -69,9 +72,12 @@
 
 - name: keep nvidia devices ready-to-use
   ansible.builtin.command: nvidia-smi --persistence-mode=ENABLED
-  when: __nvidia_driver_persistence_mode.stdout.find('Enabled') == -1
+  when:
+    - __nvidia_driver_persistence_mode.stdout.find('Enabled') == -1
   register: __nvidia_driver_enable_persistence_mode
-  changed_when: __nvidia_driver_enable_persistence_mode.rc == 0
-  failed_when: __nvidia_driver_enable_persistence_mode.rc != 0
+  changed_when:
+    - __nvidia_driver_enable_persistence_mode.rc == 0
+  failed_when:
+    - __nvidia_driver_enable_persistence_mode.rc != 0
 
 ...
