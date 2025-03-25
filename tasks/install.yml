@@ -43,11 +43,4 @@
   failed_when:
     - __nvidia_driver_installation.rc != 0
 
-- name: remove gcc
-  ansible.builtin.dnf:
-    name: gcc
-    state: absent
-  when:
-    - nvidia_driver_build_remove_gcc
-
 ...

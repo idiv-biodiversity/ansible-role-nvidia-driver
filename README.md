@@ -52,12 +52,6 @@ downloaded:
 nvidia_driver_download_dir: '/var/cache/nvidia'
 ```
 
-Whether or not to remove the `gcc` package after installation:
-
-```yml
-nvidia_driver_build_remove_gcc: no
-```
-
 Dependencies
 ------------
 
