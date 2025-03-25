@@ -1,0 +1,19 @@
+---
+
+argument_specs:
+  main:
+    options:
+
+      nvidia_driver_download_dir:
+        type: str
+
+      nvidia_driver_install:
+        type: bool
+
+      nvidia_driver_type:
+        type: str
+
+      nvidia_driver_version:
+        type: str
+
+...
