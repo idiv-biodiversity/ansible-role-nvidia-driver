@@ -52,6 +52,12 @@ downloaded:
 nvidia_driver_download_dir: '/var/cache/nvidia'
 ```
 
+Whether to install the `persistenced` service:
+
+```yml
+nvidia_driver_persistenced: no
+```
+
 Dependencies
 ------------
 

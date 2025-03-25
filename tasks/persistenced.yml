@@ -1,0 +1,29 @@
+---
+
+- name: create nvidia-persistenced user
+  ansible.builtin.user:
+    name: nvidia-persistenced
+    comment: NVIDIA persistenced User
+    system: yes
+    home: /run/nvidia-persistenced
+    shell: /sbin/nologin
+    create_home: no
+
+- name: install nvidia-persistenced service
+  ansible.builtin.template:
+    src: nvidia-persistenced.service.j2
+    dest: /etc/systemd/system/nvidia-persistenced.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: start and enable nvidia-persistenced service
+  ansible.builtin.service:
+    name: nvidia-persistenced
+    enabled: yes
+    state: started
+  tags:
+    - nvidia-persistenced-service
+    - service
+
+...

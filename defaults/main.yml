@@ -8,4 +8,6 @@ nvidia_driver_install: yes
 
 nvidia_driver_download_dir: '/var/cache/nvidia'
 
+nvidia_driver_persistenced: no
+
 ...

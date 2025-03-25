@@ -10,6 +10,9 @@ argument_specs:
       nvidia_driver_install:
         type: bool
 
+      nvidia_driver_persistenced:
+        type: bool
+
       nvidia_driver_type:
         type: str
 

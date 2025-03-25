@@ -5,4 +5,9 @@
   when:
     - nvidia_driver_install
 
+- name: include persistenced tasks
+  ansible.builtin.include_tasks: persistenced.yml
+  when:
+    - nvidia_driver_persistenced
+
 ...

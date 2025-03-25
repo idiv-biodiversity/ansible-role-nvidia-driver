@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+[Unit]
+Description=NVIDIA Persistence Daemon
+Wants=syslog.target
+
+[Service]
+Type=forking
+User=nvidia-persistenced
+Group=nvidia-persistenced
+ExecStart=/usr/bin/nvidia-persistenced
+RuntimeDirectory=nvidia-persistenced
+
+[Install]
+WantedBy=multi-user.target
