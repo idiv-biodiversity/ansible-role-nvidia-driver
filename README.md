@@ -69,7 +69,6 @@ Dependencies
 collections:
 
   - name: community.general
-    version: X.Y.Z
 
 roles:
 
