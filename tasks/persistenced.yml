@@ -20,8 +20,12 @@
 - name: start and enable nvidia-persistenced service
   ansible.builtin.service:
     name: nvidia-persistenced
-    enabled: yes
-    state: started
+    enabled: '{{ nvidia_driver_persistenced_enabled }}'
+    state: >-
+      {{
+        nvidia_driver_persistenced_start
+        | ternary("started", "stopped")
+      }}
   tags:
     - nvidia-persistenced-service
     - service
