@@ -32,6 +32,7 @@
       - 'gcc'
       - 'kernel-devel-{{ ansible_kernel }}'
       - 'kernel-headers-{{ ansible_kernel }}'
+    enablerepo: '{{ nvidia_driver_enablerepos }}'
 
 - name: install driver
   ansible.builtin.command: ./{{ __nvidia_driver_filename }} --silent
