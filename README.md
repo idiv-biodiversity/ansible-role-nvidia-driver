@@ -58,6 +58,13 @@ Whether to install the `persistenced` service:
 nvidia_driver_persistenced: no
 ```
 
+Whether the `persistenced` service should be started and enabled:
+
+```yml
+nvidia_driver_persistenced_enabled: yes
+nvidia_driver_persistenced_start: yes
+```
+
 Dependencies
 ------------
 
