@@ -65,6 +65,12 @@ nvidia_driver_persistenced_enabled: yes
 nvidia_driver_persistenced_start: yes
 ```
 
+Whether to enable additional DNF-Repos:
+
+```yml
+nvidia_driver_enablerepos: []
+```
+
 Dependencies
 ------------
 
